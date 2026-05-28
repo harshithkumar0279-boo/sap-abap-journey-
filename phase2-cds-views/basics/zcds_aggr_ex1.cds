@@ -17,10 +17,10 @@ define view entity ZCDS_aggr_ex1
       max(flight_date)                                          as last_fligh,
 
       avg( cast(price as abap.dec( 15, 3)) as abap.dec( 15, 3)) as AveragePrice
-
-
-      //        sum(seats_occupied) as total_occupied
 }
+where currency_code = 'USD'
 group by
   carrier_id,
   currency_code
+ having
+ sum( price )  > 10000.00
